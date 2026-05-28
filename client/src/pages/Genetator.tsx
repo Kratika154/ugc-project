@@ -24,6 +24,8 @@ const Genetator = () => {
   const [userPrompt, setUserPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
 
+  const [generatedImage, setGeneratedImage] = useState('')
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'product' | 'model')=>{
     if(e.target.files && e.target.files[0]){
       if(type === 'product') setProductImage(e.target.files[0]);
@@ -46,17 +48,33 @@ const Genetator = () => {
         formData.append('productDescription', productDescription)
         formData.append('userPrompt', userPrompt)
         formData.append('aspectRatio', aspectRatio)
-        formData.append('images', productImage)
-        formData.append('images', modelImage)
+        formData.append('product', productImage)
+        formData.append('model', modelImage)
 
-        const token = await getToken()
+       /* const token = await getToken()
 
         const { data } = await api.post('/api/project/create', formData, {
            headers: { Authorization: `Bearer ${token}` }
         })
 
         toast.success(data.message)
-        navigate('/result/' + data.projectId)
+        navigate('/result/' + data.projectId)*/
+        const res = await fetch("http://localhost:5000/generate-ad", {
+  method: "POST",
+  body: formData,
+});
+
+const data = await res.json();
+
+setGeneratedImage(data.image);
+console.log(data);
+
+if (data.image) {
+  setGeneratedImage(data.image);
+  toast.success("Ad generated successfully!");
+} else {
+  toast.error("Failed to generate image");
+}
 
       } catch (error: any) {
         setIsGenerating(false);
