@@ -6,14 +6,14 @@ import { PrimaryButton } from "../components/Buttons"
 import { useAuth, useUser } from "@clerk/clerk-react"
 import { useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
-import api from "../configs/axios"
+//import api from "../configs/axios"
 
 
 const Genetator = () => {
 
   const {user} = useUser()
-  const {getToken} = useAuth()
-  const navigate = useNavigate()
+ // const {getToken} = useAuth()
+ // const navigate = useNavigate()
 
   const [name, setName] = useState('')
   const [productName, setProductName] = useState('')
@@ -24,7 +24,7 @@ const Genetator = () => {
   const [userPrompt, setUserPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
 
-  const [generatedImage, setGeneratedImage] = useState('')
+ // const [generatedImage, setGeneratedImage] = useState('')
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'product' | 'model')=>{
     if(e.target.files && e.target.files[0]){
