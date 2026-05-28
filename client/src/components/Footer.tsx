@@ -46,7 +46,7 @@ export default function Footer() {
                 </div>
 
                 <p className="py-4 text-center text-sm text-gray-400">
-                 © {new Date().getFullYear()} Build with ❤️ by Kratika & Kritik
+                 Build with ❤️ by Kratika & Kritik
                 </p>
             </div>
         </motion.footer>
