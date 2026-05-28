@@ -24,7 +24,7 @@ const Genetator = () => {
   const [userPrompt, setUserPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
 
- // const [generatedImage, setGeneratedImage] = useState('')
+  const [generatedImage, setGeneratedImage] = useState('')
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'product' | 'model')=>{
     if(e.target.files && e.target.files[0]){
